@@ -1,8 +1,13 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var port = process.env.PORT || 3000;
 
-var port = process.env.PORT | 3000;
+server.listen(port, function () {
+  console.log('Server listening at port %d', port);
+});
+
 
 app.get('/',function(req,res){
 	res.sendFile(__dirname + '/index.html');
@@ -18,8 +23,4 @@ io.sockets.on('connection',function(socket){
 		var msg = username + ' : ' + tempMsg;
 		io.emit('chat message', msg);
 	});
-});
-
-http.listen(port,function(){
-	console.log("Server listening on port " + port);
 });
