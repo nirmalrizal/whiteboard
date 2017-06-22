@@ -13,14 +13,23 @@ app.get('/',function(req,res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-io.sockets.on('connection',function(socket){
+io.on('connection',function(socket){
 	console.log('a user connected');
-	var username = 'Anonymous User';
-	socket.on('add user',function(user){
-		username = user;
+
+	socket.on('mousedown', function(data){
+		io.emit('mousedown', data);
 	});
-	socket.on('chat message', function(tempMsg){
-		var msg = username + ' : ' + tempMsg;
-		io.emit('chat message', msg);
+
+	socket.on('mousemove', function(data){
+		io.emit('mousemove', data);
 	});
+
+	socket.on('mouseup', function(){
+		io.emit('mouseup');
+	});
+
+	socket.on('mouseleave', function(){
+		io.emit('mouseleave');
+	});
+
 });
