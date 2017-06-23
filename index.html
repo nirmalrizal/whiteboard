@@ -24,8 +24,9 @@
       obj.mouseX = e.pageX - this.offsetLeft;
       obj.mouseY = e.pageY - this.offsetTop;
         
-      obj.paint = true;
       paint = true;
+      addClick(obj.mouseX, obj.mouseY);
+      redraw();
       socket.emit('mousedown',obj);
     });
 
@@ -34,15 +35,19 @@
         var obj = {};
         obj.mouseX = e.pageX - this.offsetLeft;
         obj.mouseY = e.pageY - this.offsetTop;
+        addClick(obj.mouseX, obj.mouseY, true);
+        redraw();
         socket.emit('mousemove',obj);
       }
     });
 
     $('#canvas').mouseup(function(e){
+      paint = false;
       socket.emit('mouseup');
     });
 
     $('#canvas').mouseleave(function(e){
+      paint = false;
       socket.emit('mouseleave');
     });
 
