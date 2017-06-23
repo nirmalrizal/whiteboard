@@ -2,16 +2,28 @@
 <html>
 <head>
   <title>Canvas Drawing</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <style>
     #canvas{
       border: solid 2px;
       margin: 20px;
+      cursor: pointer;
       margin-left: 200px;
     }
   </style>
 </head>
 <body>
-  <canvas id="canvas" width="750" height="420"></canvas>
+  <div class="container-fluid">
+    <h1 class="text-center">WhiteBoard</h1>
+    <p class="text-center">Open two window of your browser side-by-side and try writing</p>
+  </div>
+  <div class="container">
+        <canvas class="center-block" id="canvas" width="800" height="420"></canvas>
+  </div>
+  <footer>
+    <p class="text-center">Developed by <a href="https://github.com/nirmalrizal53">Nirmal Rijal</a></p>
+    <p class="text-center">Project Link : <a herf="https://github.com/nirmalrizal53/whiteboard">WhiteBoard</a></p>
+  </footer>
   <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
