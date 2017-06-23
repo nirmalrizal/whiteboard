@@ -17,19 +17,19 @@ io.on('connection',function(socket){
 	console.log('a user connected');
 
 	socket.on('mousedown', function(data){
-		io.emit('mousedown', data);
+		socket.broadcast.emit('mousedown', data);
 	});
 
 	socket.on('mousemove', function(data){
-		io.emit('mousemove', data);
+		socket.broadcast.emit('mousemove', data);
 	});
 
 	socket.on('mouseup', function(){
-		io.emit('mouseup');
+		socket.broadcast.emit('mouseup');
 	});
 
 	socket.on('mouseleave', function(){
-		io.emit('mouseleave');
+		socket.broadcast.emit('mouseleave');
 	});
 
 });
